@@ -1,0 +1,10 @@
+<?php
+@session_start();
+$id=$_SESSION['id'];
+$name=$_SESSION['name'];
+$username=@$_SESSION['username'];
+if(empty($id))
+{
+	header("location:login.php");
+}
+?>
