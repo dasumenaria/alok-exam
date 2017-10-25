@@ -127,7 +127,7 @@ include("database.php");
                    
                     <select class="form-control ust select2me" required multiple="multiple" name="category_id[]" placeholder="Select...">
                         <?php 
-                            $query2=mysql_query("select * from `exam_category` ORder By `id`"); 
+                            $query2=mysql_query("select * from `exam_category` ORder By `order_type` ASC"); 
                             while($fetch2=mysql_fetch_array($query2))
                             {
                                 $i++;

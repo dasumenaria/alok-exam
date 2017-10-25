@@ -19,29 +19,29 @@ if(!empty($class_id) && !empty($sec) )
 ?>
  
 <table width="90%" align="center" style="text-align:center;font-size:15px; margin-top:5px; border-collapse:collapse">
-	<tr style="font-size:20px">
-		<td style="padding:5px" >
-			<h3><strong><?php echo $school; ?>  (SECTION LIST)</strong></h3>
-		</td>
-	</tr >
-	<tr >
-		<td style="padding-left:10px">
-			<strong>Class</strong> - <?php echo $cls ; ?> <strong>Section - </strong> <?php echo $sec_nm; ?>
-		</td>
-	</tr>
+		<tr style="font-size:20px">
+			<td style="padding:5px" >
+				<h3><strong><?php echo $school; ?>  (SECTION LIST)</strong></h3>
+			</td>
+		</tr >
+		<tr >
+			<td style="padding-left:10px">
+				<strong>Class</strong> - <?php echo $cls ; ?> <strong>Section - </strong> <?php echo $sec_nm; ?>
+			</td>
+		</tr>
+
 </table>
 <br />
+
 <table class="table table-bordered table-hover">	
 <tr>
 	<th width="5%">S.No.</th>
 	<th width="7%">Scholar No.</th> 
     <th width="10%">Name</th> 
-	<th width="10%">Roll No.<input type="text" onkeyup="auto_roll_no()" class="form-control input-xsmall" id="start_roll_no" /></th> 
+	<th width="10%">Roll No.<input type="text" onkeyup="auto_roll_no()" class="form-control input-small" id="start_roll_no" /></th> 
     <th width="10%">DOB (DD-MM-YYYY)</th> 
-    <!--<th width="7%">Class</th>--->
+    <th width="7%">Class</th>
     <th width="10%">Section</th>
-    <!--th width="10%">Photo</th>
-    <th width="10%">Change Image</th-->
    </tr>
 <?php
 $x=0;
@@ -54,8 +54,7 @@ $sle_stdnt_reg=mysql_query(" select * from `student` where `class_id`='$class_id
 	$fnamee=$ftc_stdnt_reg['name'];
 	$scholar_no=$ftc_stdnt_reg['scholar_no'];
 	$dob_nw=$ftc_stdnt_reg['dob'];
-	$photo_path=$ftc_stdnt_reg['photo_path'];
-	if($dob_nw!='0000-00-00')
+	if(!empty($dob_nw))
 	{
 		$dob=date("d-m-Y",strtotime($dob_nw));
 	}
@@ -72,9 +71,9 @@ $sle_stdnt_reg=mysql_query(" select * from `student` where `class_id`='$class_id
     <td><?php echo $x; ?><input name="update_id[]" type="hidden" value="<?php echo $update_id; ?>" /></td>
     <td><?php echo $scholar_no; ?></td>
     <td><input name="name[]" type="text" class="form-control input-medium" value="<?php echo $fnamee; ?>" /></td>
-    <td><input name="roll_no[]" id="roll_no<?php echo $x; ?>" type="text" class="form-control input-xsmall" value="<?php echo $roll_noo; ?>" /></td>
+    <td><input name="roll_no[]" id="roll_no<?php echo $x; ?>" type="text" class="form-control input-small" value="<?php echo $roll_noo; ?>" /></td>
     <td><input  name="dob[]" type="text" class="form-control input-small" value="<?php echo $dob; ?>" /></td>
-    <!--<td><?php echo $cls; ?></td>-->
+    <td><?php echo $cls; ?></td>
     <td>
 	<select class="form-control input-small" name="new_sec[]" >
 	 	<option value=""> -Select-</option>
@@ -92,8 +91,6 @@ $sle_stdnt_reg=mysql_query(" select * from `student` where `class_id`='$class_id
          ?>
     </select>
     </td>
-	<!--td><img src="user/<?php //echo $photo_path; ?>" height="30px" width ="30px"/></td>
-	<td><input type="file" name="upload_image[]" /></td-->
 </tr>
  	 <?php
 	 }
@@ -131,12 +128,10 @@ $cls=$ftc_class['class'];
 	<th width="5%">S.No.</th>
 	<th width="7%">Scholar No.</th> 
     <th width="10%">Name</th> 
-	<th width="10%">Roll No.<input type="text" onkeyup="auto_roll_no()" class="form-control input-xsmall" id="start_roll_no" /></th> 
+	<th width="10%">Roll No.<input type="text" onkeyup="auto_roll_no()" class="form-control input-small" id="start_roll_no" /></th> 
     <th width="10%">DOB (DD-MM-YYYY)</th> 
-    <!--<th width="7%">Class</th>-->
+    <th width="7%">Class</th>
     <th width="10%">Section</th>
-	<!--th>Photo</th>
-	<th>Change Image</th-->
    </tr>
 <?php
 $x=0;
@@ -148,7 +143,6 @@ $sle_stdnt_reg=mysql_query(" select * from `student` where `class_id`='$class_id
 	$roll_noo=$ftc_stdnt_reg['roll_no'];
 	$fnamee=$ftc_stdnt_reg['name'];
 	$scholar_no=$ftc_stdnt_reg['scholar_no'];
-	$photo_path=$ftc_stdnt_reg['photo_path'];
 	$dob_nw=$ftc_stdnt_reg['dob'];
 	if(!empty($dob_nw))
 	{
@@ -167,9 +161,9 @@ $sle_stdnt_reg=mysql_query(" select * from `student` where `class_id`='$class_id
     <td><?php echo $x; ?><input name="update_id[]" type="hidden" value="<?php echo $update_id; ?>" /></td>
     <td><?php echo $scholar_no; ?></td>
     <td><input name="name[]" type="text" class="form-control input-medium" value="<?php echo $fnamee; ?>" /></td>
-    <td><input name="roll_no[]" type="text" id="roll_no<?php echo $x; ?>" class="form-control input-xsmall" value="<?php echo $roll_noo; ?>" /></td>
+    <td><input name="roll_no[]" type="text" id="roll_no<?php echo $x; ?>" class="form-control input-small" value="<?php echo $roll_noo; ?>" /></td>
     <td><input  name="dob[]" type="text" class="form-control input-small" value="<?php echo $dob; ?>" /></td>
-    <!--<td><?php echo $cls; ?></td>-->
+    <td><?php echo $cls; ?></td>
     <td><select class="form-control input-small" name="new_sec[]" >
 	 	<option value=""> -Select-</option>
 		<?php 
@@ -188,8 +182,6 @@ $sle_stdnt_reg=mysql_query(" select * from `student` where `class_id`='$class_id
          ?>
      </select>
     </td>
-	<!--td><img src="user/<?php //echo $photo_path; ?>" height="30px" width ="30px"/></td>
-	<td><input type="file" name="upload_image[]" /></td-->
 </tr>
  	 <?php
 	 }

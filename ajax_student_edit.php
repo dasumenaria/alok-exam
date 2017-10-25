@@ -3,9 +3,7 @@ include("database.php");
 $scholar_no=$_GET['sch'];
 $class_id=$_GET['cls'];
 $section_id=$_GET['sec'];
-$student_id=$_GET['stu'];
 $qury='';
-if(empty($student_id)){
 if(!empty($class_id) && empty($scholar_no) && empty($section_id))
 {
 $qury="`class_id` = '$class_id'";
@@ -34,9 +32,7 @@ if(!empty($class_id) && !empty($scholar_no) && !empty($section_id))
 {
 $qury="`class_id` = '$class_id' && `section_id` = '$section_id' && `scholar_no` = '$scholar_no'";
 }
-}else if(!empty($student_id)){
-$qury="`id`='$student_id'";
-}
+ 
 ?>
 <div class="portlet-body">
     <div class="table-responsive">

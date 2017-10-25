@@ -8,47 +8,20 @@ if(isset($_POST['submit_sec_change']))
 	$update_id=$_POST['update_id'];
 	$name=$_POST['name'];
 	$roll_no=$_POST['roll_no'];
- 	$gallery_pic=$_FILES["upload_image"]["tmp_name"];
- 	$file_name=$_FILES["upload_image"]["name"];
-	  echo"<pre>";
-	//print_r($gallery_pic); exit;
-	//print_r($update_id); exit;
-	echo"</pre>"; 
-	
 	$dob=$_POST['dob'];
 	$new_sec=$_POST['new_sec'];
 	$t=0;
-	
-	
 	foreach($update_id as $updates_id)
 	{
-		 
-		$fileacutal_name=$file_name[$t];
 		$Studntname=$name[$t];
-		$imageupdated=$gallery_pic[$t];
- 		$Studntroll_no=$roll_no[$t];
+		$Studntroll_no=$roll_no[$t];
 		$Studntdob=$dob[$t];
 		$Studntnew_sec=$new_sec[$t];
- 		if(!empty($Studntdob))
+		if(!empty($Studntdob))
 		{
 			$Studntdob=date('Y-m-d',strtotime($Studntdob));	
 		}
-		if(!empty($imageupdated))
-		{
-			$file_name='student'.$updates_id;  
- 			$target ="user/";
-			
-  			@$ext = pathinfo($fileacutal_name,  PATHINFO_EXTENSION); 
- 			$random=rand(100, 10000);
-			$target=$target.basename($file_name.'.'.$ext);
-			move_uploaded_file($imageupdated,$target);
- 			$item_image=$file_name.'.'.$ext;  
- 			mysql_query("update `student` set `name`='$Studntname' ,`roll_no`='$Studntroll_no',`dob`='$Studntdob',`section_id`='$Studntnew_sec',`photo_path`='$item_image' where `id` = '$updates_id'");
- 		}
-		else
-		{
- 			mysql_query("update `student` set `name`='$Studntname' ,`roll_no`='$Studntroll_no',`dob`='$Studntdob',`section_id`='$Studntnew_sec' where `id` = '$updates_id'");
- 		}
+		mysql_query("update `student` set `name`='$Studntname' ,`roll_no`='$Studntroll_no',`dob`='$Studntdob',`section_id`='$Studntnew_sec' where `id` = '$updates_id'");
 		$t++;
 	}
 }		
@@ -72,7 +45,7 @@ if(isset($_POST['submit_sec_change']))
 			</div>			 
 			<div class="portlet-body">
 				<div class="table-responsive">
-				<form method="post" enctype="multipart/form-data">
+				<form method="post">
 					<table width="80%" style="text-align:center">
 					<tr>
 					<td width="40%">Enter Class</td>

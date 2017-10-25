@@ -62,11 +62,13 @@ $CuttentStatust=mysql_query("select `roman` from `master_class` where `id`='$cla
 <body>
 	<?php 
     //** Find Elevtive Subject In array
-	$stdunt=mysql_query("select `id`,`roll_no`,`name` from `student` where `class_id`='$class_id' && `section_id` = '$section_id' && `scholar_no`='$scholar_no'");
-    $ftc_stdunt=mysql_fetch_array($stdunt);
-	$id=$ftc_stdunt['id'];
-	$StudentRollNo=$ftc_stdunt['roll_no'];
-	$StudentName=$ftc_stdunt['name'];
+	$stdunt=mysql_query("select `id`,`roll_no`,`name`,`scholar_no` from `student` where `class_id`='$class_id' && `section_id` = '$section_id'");
+    while($ftc_stdunt=mysql_fetch_array($stdunt))
+	{
+		$id=$ftc_stdunt['id'];
+		$StudentRollNo=$ftc_stdunt['roll_no'];
+		$StudentName=$ftc_stdunt['name'];
+		$scholar_no=$ftc_stdunt['scholar_no'];
  		$stdunt_elev=mysql_query("select `subject_id` from `elective` where `scholar_id`='$scholar_no'");
 		while($fte_elev=mysql_fetch_array($stdunt_elev))
 		{
@@ -132,7 +134,7 @@ $CuttentStatust=mysql_query("select `roman` from `master_class` where `id`='$cla
          </tr>
 		 
 		 <!----------MAX--MARKS--START----------->
-		 <tr class="header_font"  bgcolor="#E0A366"><th colspan="2">Max Marks</th>
+		 <tr class="header_font" bgcolor="#E0A366"><th colspan="2">Max Marks</th>
 				<?php 
                 $st=mysql_query("select DISTINCT(term_id) from `master_architecture` where `marksheet_term_id`='$term_id' && `class_id`='$class_id' && `section_id`='$section_id'");
                 while($ft=mysql_fetch_array($st))
@@ -178,6 +180,7 @@ $CuttentStatust=mysql_query("select `roman` from `master_class` where `id`='$cla
 					<th height="30px"><b><?php echo $view_max_marks; ?></b></th>
 					<?php
 						$all_view_max_marks+=$view_max_marks;
+						$view_max_marks=0;
 
                 } }
                 ?>	
@@ -191,8 +194,10 @@ $CuttentStatust=mysql_query("select `roman` from `master_class` where `id`='$cla
 		<!--- A Max+
 				L T M Max marks=0 ------------------------> 
 		<?php 
+		$all_view_max_marks=0;
 		$OverAllTotalGetMarks=0;
 		$OverAllTotalMaxMarks=0;
+		$TotalGetMarks=0;
 		$Result=0;
 		$FailedInSubSubject=array();
 		$FaildInSubject=array();
@@ -316,7 +321,7 @@ $CuttentStatust=mysql_query("select `roman` from `master_class` where `id`='$cla
 									if($reduse=='no'){
 										$TotalMaxMarks+=$MainMaxMarks;
 										$OverAllTotalMaxMarks+=$MainMaxMarks;
-									}else if(($reduse=='yes' && $l==0)){
+									}else if(($reduse=='yes' && $l==1)){
 										
 										$l=1;
 										$TotalMaxMarks+=$reduse_to;
@@ -375,9 +380,8 @@ $CuttentStatust=mysql_query("select `roman` from `master_class` where `id`='$cla
 							 </th>
 							 <th>
 								<?php
-								 $TotalGetMarks.'/'.$TotalMaxMarks.'='.$tot_avg; 
-								 $tot_avg=round($tot_avg);
-								 echo $tot_show_grade=calculate_secondary_grade($tot_avg); ?>
+								$tot_avg=round($tot_avg)
+								echo $tot_show_grade=calculate_secondary_grade($tot_avg); ?>
 							 </th>
 							   
                         <?php
@@ -413,6 +417,7 @@ $CuttentStatust=mysql_query("select `roman` from `master_class` where `id`='$cla
 	</table>
 		
 		 <?php
+		 $TotalGetMarks=0;
 						 //** Calculate Percentage
 							$GetPercentage=(($OverAllTotalGetMarks*100)/$OverAllTotalMaxMarks);
 							$OverAllPersentage=number_format($GetPercentage,2);
@@ -909,10 +914,9 @@ $CuttentStatust=mysql_query("select `roman` from `master_class` where `id`='$cla
 		<tr>
  			<th height="28px">
 			<?php
-			 
 				$schls=mysql_query("select * from `staff_class` where `class_id`='$class_id' && `section_id`='$section_id' ");
 				$ftc_schls=mysql_fetch_array($schls);
-				  $count=mysql_num_rows($schls);
+				$count=mysql_num_rows($schls);
 				$name='';
 				if($count>0)
 				{
@@ -1027,7 +1031,7 @@ $CuttentStatust=mysql_query("select `roman` from `master_class` where `id`='$cla
 			</td>
 		</tr>
 	</table>
-     
 </div>
+	<?php }?>
 </body>
 </html>

@@ -147,10 +147,10 @@ if(isset($_POST['sub1']))
 								please select Class category</span>
 							</div>
 						</div>
-				</form>
+				
 					 	<div id="data"></div>
 					</div>
-				
+				</form>
 			</div>				<!-- END FORM-->
 		</div>
 	</div>

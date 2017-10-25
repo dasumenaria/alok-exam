@@ -131,26 +131,14 @@ $id1=$_GET['pon'];
 <script>
 $(document).ready(function(){
     $('.chk_boxes').click(function() {
-		value = +$('.chk_boxes').is( ':checked' );
-
-if(value==0)
-	{
-		$(".all_chk" ).parent('span').removeClass('checked');
-		$(".all_chk" ).removeAttr('checked','checked');
-	}
-else
-	{
-		$(".all_chk" ).parent('span').addClass('checked');
-		$(".all_chk" ).attr('checked','checked');
-	}
-    /*      $('.chk_boxes1').prop('checked', this.checked);
+	
+        $('.chk_boxes1').prop('checked', this.checked);
         $('.chkall').prop('checked', this.checked);
-        $('.chkall').attr('checked','checked');
 		
 	});
 	$('.chk_boxes1').click(function() {
 		var id=$(this).val();
         $('.chk_boxes2'+id).prop('checked', this.checked);
-    }); */
+    });
 });
 </script>

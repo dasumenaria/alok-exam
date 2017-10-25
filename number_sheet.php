@@ -67,7 +67,7 @@ header ("Content-Description: Generated Report" );
 	$qwq.="\n";
 	
 	
-	$query=mysql_query("select * from `student` where `class_id`='$class' && `section_id`='$section' order By `name` ASC");
+	$query=mysql_query("select * from `student` where `class_id`='$class' && `section_id`='$section' order By `roll_no` ASC");
 	while($fets=mysql_fetch_array($query))
 	{
 	$roll_no=$fets['roll_no'];

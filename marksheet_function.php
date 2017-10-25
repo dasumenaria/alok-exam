@@ -402,7 +402,7 @@ function header_info_Primary($id,$exam_name)
     <table width="100%" border="0"><br>
 		<tr>
 			<td width="15%">
-				<img width="100" height="100" src="img/cbselogo.png"/>
+				<img width="140" height="160" src="img/cbselogo.png"/>
 			</td>
 				<td width="70%">
 					<div  style="font-size:35px; text-align:center;">
@@ -413,22 +413,19 @@ function header_info_Primary($id,$exam_name)
 					 <?php echo $ftc_schl['affiliation_no'];?></br>
 					 </strong>
 					 </div>
+					 <div  style="font-size:22px; margin-top:10px; text-align:center;">
+						<strong>Record of Academic Performance<br>
+						Session : ( <?php echo $ses; ?> )</strong>
+					</div>
 				</td>
 				<td width="15%">
-				<img width="100" height="100"src="img/<?php echo $ftc_schl['logo'];?>"/>
+				<img width="140" height="160"src="img/<?php echo $ftc_schl['logo'];?>"/>
 			</td>
 		</tr>
-		<tr> 
-			<td colspan="3" align="center">
-				<div  style="font-size:25px; text-align:center;">
-					<strong>Record of Academic PerformanceFinal<br>
-					Session : ( <?php echo $ses; ?> )</strong>
-				</div>
-			</td>
-		</tr>
+		 
 	</table>
 	<div style="width:100%">
-	<table height="120" style="width:100%;margin-top:20px; margin-left:1px; font-size:14px;font weight:bold" cellpadding="1" border="0" cellspacing="10">
+	<table height="100" style="width:100%;margin-top:20px; margin-left:1px; font-size:14px;font weight:bold" cellpadding="1" border="0" cellspacing="10">
          
       
 	  <tr align="left">
@@ -451,8 +448,8 @@ function header_info_Primary($id,$exam_name)
 		<th> : &nbsp; <?php echo ucwords($cls);?></th>
  	  </tr>
 	  <tr align="left">
-      	<th style="width:15%">Medium</th>
-		<th style="width:55%" align="left">: &nbsp; English</th>
+      	<th style="width:15%">DOB</th>
+		<th style="width:55%" align="left">: &nbsp; <?php echo $dob; ?></th>
         <th style="width:15%">Section</th>
 		<th align="left"> : &nbsp; <?php echo ucwords($sec)?></th>
       </tr>
@@ -486,7 +483,7 @@ function qrcode_1_2_fnl()
                 { 
                       $filename = $PNG_TEMP_DIR.$qrcode.'.png';
           QRcode::png($qrcode, $filename, $errorCorrectionLevel, $matrixPointSize, 2); 
-                                 echo '<img height="150px" width="150px" src="'.$PNG_WEB_DIR.basename($filename).'" />';               
+                                 echo '<img height="110px" width="110px" src="'.$PNG_WEB_DIR.basename($filename).'" />';               
                 }
 }
 
@@ -512,7 +509,27 @@ function calculate_grade_point($mhfa1)
    else if($mhfa1>=91 && $mhfa1<=100)
    {echo "10.0";} 
 }
-
+function calculate_secondary_grade($mhfa1)
+{
+	
+	if($mhfa1>=0 && $mhfa1<=32)
+	{echo "E";}
+	else if($mhfa1>=33 && $mhfa1<=40.99)
+	{echo "D";}
+	else if($mhfa1>=41 && $mhfa1<=50.99)
+	{echo "C2";}
+	else if($mhfa1>=51 && $mhfa1<=60.99)
+	{echo "C1";}
+	else if($mhfa1>=61 && $mhfa1<=70.99)
+	{echo "B2";}
+	else if($mhfa1>=71 && $mhfa1<=80.99)
+	{echo "B1";}
+	else if($mhfa1>=81 && $mhfa1<=90.99)
+	{echo "A2";}
+	else if($mhfa1>=91 && $mhfa1<=100)
+	{echo "A1";}
+}
+  
 
 function calculate_grade($mhfa1)
 {
@@ -558,27 +575,6 @@ function calculate_primary_grade($mhfa1)
 	else if($mhfa1>=91 && $mhfa1<=100)
 	{echo "A1";}
 }
-
-function calculate_secondary_grade($mhfa1)
-{
-	
-	if($mhfa1>=0 && $mhfa1<=32)
-	{echo "E";}
-	else if($mhfa1>=33 && $mhfa1<=40.99)
-	{echo "D";}
-	else if($mhfa1>=41 && $mhfa1<=50.99)
-	{echo "C2";}
-	else if($mhfa1>=51 && $mhfa1<=60.99)
-	{echo "C1";}
-	else if($mhfa1>=61 && $mhfa1<=70.99)
-	{echo "B2";}
-	else if($mhfa1>=71 && $mhfa1<=80.99)
-	{echo "B1";}
-	else if($mhfa1>=81 && $mhfa1<=90.99)
-	{echo "A2";}
-	else if($mhfa1>=91 && $mhfa1<=100)
-	{echo "A1";}
-}
   
 function calculate_primary_grade_co_scholar($mhfa1)
 {
@@ -594,16 +590,6 @@ function calculate_primary_grade_co_scholar($mhfa1)
 	{echo "A+";}
 }
 
-function calculate_secondary_grade_co_scholar($mhfa1)
-{
-	if($mhfa1>=00 && $mhfa1<=30.99)
-	{echo "C";}
-	else if($mhfa1>=31 && $mhfa1<=60.99)
-	{echo "B";}
-	else if($mhfa1>=61 && $mhfa1<=100)
-	{echo "A";}
-}
-
 function calculate_primary_grade_co_scholar_six($mhfa1)
 {
 	if($mhfa1>=00 && $mhfa1<=60.99)
@@ -617,7 +603,15 @@ function calculate_primary_grade_co_scholar_six($mhfa1)
 	else if($mhfa1>=91 && $mhfa1<=100)
 	{echo "A";}
 }
-
+function calculate_secondary_grade_co_scholar($mhfa1)
+{
+	if($mhfa1>=33 && $mhfa1<=59.99)
+	{echo "C";}
+	else if($mhfa1>=60 && $mhfa1<=79.99)
+	{echo "B";}
+	else if($mhfa1>=80 && $mhfa1<=100)
+	{echo "A";}
+}
 function calculate_remark($present)
 {
 	 if($present>=90 && $present<=100)

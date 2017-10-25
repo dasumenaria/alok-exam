@@ -137,7 +137,7 @@ $query=mysql_query("select * from `student` where `class_id`='$class_id' && `sec
 						<?php } ?>
                                     
 								</tr>
-							</thead>
+								</thead>
 		<tbody>
 <?php $query=mysql_query("select * from `student` where `class_id`='$class' && `section_id`='$section' order By `roll_no` ASC"); $i=0;
 	 while($fets=mysql_fetch_array($query))
@@ -247,8 +247,7 @@ jQuery(document).ready(function() {
 
 	$(".number").on('keyup',function(){	
 		var marks=$(this).val();
-		
-		if(marks.length >0){//alert(marks);
+		if(marks>0){
 		var class_id=$(this).closest('td').find("input[name=class_id]").val();
 		var section_id=$(this).closest('td').find("input[name=section_id]").val();
 		var subject_id=$(this).closest('td').find("input[name=subject_id]").val();

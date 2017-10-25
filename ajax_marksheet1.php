@@ -91,10 +91,20 @@ if($flag=='HELLO'){
 			<a target="_blank" href="view_marksheet_primary_term1_all.php?sch=<?php echo $scholar_no; ?>&cls=<?php echo $class_id; ?>&sec=<?php echo $section_id; ?>
 			&exm=<?php echo $exam_name; ?>" <button type="button" class="btn yellow">All</button></a>
 				
-			<?php }else{ ?>
- 			<a target="_blank" href="others6.php?sch=<?php echo $scholar_no; ?>&cls=<?php echo $class_id; ?>&sec=<?php echo $section_id; ?>
+			<?php } 
+			else if($class_id >=7 && $class_id <=12 ){ ?>
+ 			<a target="_blank" href="view_marksheet_secondary_all.php?sch=<?php echo $scholar_no; ?>&cls=<?php echo $class_id; ?>&sec=<?php echo $section_id; ?>
 			&exm=<?php echo $exam_name; ?>" <button type="button" class="btn yellow">All</button></a>
-			<?php } ?>
+			<?php }  
+			else if($class_id >=13 && $class_id <=14 ){ ?>
+ 			<a target="_blank" href="view_marksheet_XIX_all.php?sch=<?php echo $scholar_no; ?>&cls=<?php echo $class_id; ?>&sec=<?php echo $section_id; ?>
+			&exm=<?php echo $exam_name; ?>" <button type="button" class="btn yellow">All</button></a>
+			<?php }
+			else if($class_id >=15 && $class_id <=16 ){ ?>
+ 			<a target="_blank" href="view_marksheet_1112_all.php?sch=<?php echo $scholar_no; ?>&cls=<?php echo $class_id; ?>&sec=<?php echo $section_id; ?>
+			&exm=<?php echo $exam_name; ?>" <button type="button" class="btn yellow">All</button></a>
+			<?php }
+			else {} ?>
  		</div>
 
  <?php } if((!empty($class_id)) && (!empty($section_id)) && (!empty($exam_name)) && $flag!='HELLO'){?>
@@ -160,10 +170,18 @@ if($flag=='HELLO'){
 					<a target="_blank" href="view_marksheet_primary_term1.php?sch=<?php echo $scholar_no; ?>&cls=<?php echo $class_id; ?>&sec=<?php echo $section_id; ?>&exm=<?php echo $exam_name; ?>" class="btn btn-xs yellow">
 					View <i class="fa fa-edit"></i>
 					</a>
-					<?php }else{ ?>
-					<a target="_blank" href="view_marksheet.php?sch=<?php echo $scholar_no; ?>&cls=<?php echo $class_id; ?>&sec=<?php echo $section_id; ?>&exm=<?php echo $exam_name; ?>" class="btn btn-xs yellow">
+					<?php }else if($class_id >=7 && $class_id <=12 ){ ?>
+					<a target="_blank" href="view_marksheet_secondary.php?sch=<?php echo $scholar_no; ?>&cls=<?php echo $class_id; ?>&sec=<?php echo $section_id; ?>&exm=<?php echo $exam_name; ?>" class="btn btn-xs yellow">
 					View <i class="fa fa-edit"></i>
 					</a>
+					<?php }
+					else if($class_id >=13 && $class_id <=14 ){ ?>
+					<a target="_blank" href="view_marksheet_XIX.php?sch=<?php echo $scholar_no; ?>&cls=<?php echo $class_id; ?>&sec=<?php echo $section_id; ?>&exm=<?php echo $exam_name; ?>" class="btn btn-xs yellow">
+					View <i class="fa fa-edit"></i>
+					<?php }
+					else if($class_id ==15 || $class_id ==16){ ?>
+					<a target="_blank" href="view_marksheet_1112th.php?sch=<?php echo $scholar_no; ?>&cls=<?php echo $class_id; ?>&sec=<?php echo $section_id; ?>&exm=<?php echo $exam_name; ?>" class="btn btn-xs yellow">
+					View <i class="fa fa-edit"></i>
 					<?php } ?>
 						</td>												 
 					</tr>
