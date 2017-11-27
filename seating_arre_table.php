@@ -32,29 +32,31 @@ if(!empty( $coulmn) && !empty($capacity) && !empty($romm))
 {
 ?>
 <h3 style="text-align:center;">SEATING ARRANGEMENT</h3>
-<div style="margin-left:45%">
-<button   type="button" class="btn btn-primary hide_print" onclick="window.print()" align="right" value="Print Admit Card">Print </button>
+<div align="center">
+<button type="submit" class="btn btn-primary hide_print" formtarget="_blank" formaction="attend_list.php" name="Attendence_listt" align="right">Print Attendence List </button>
+<button type="submit" class="btn btn-primary hide_print" formtarget="_blank"   formaction="admit_card.php" name="admiton_card" align="right">Print Admit Card </button> 
+<button type="button" class="btn btn-primary hide_print" onclick="window.print()" align="right" >Print </button>
 
 
 </div>
-<div style="width:100%;margin-top:10px; margin-left:40%">
-	<table class="table-bordered table-hover">
+<div style="width:100%;margin-top:10px; text-align:center;" align="center">
+	<table align="center" class="table-bordered table-hover" width="30%">
 		<tr>
-			<th height="30px">Term : &nbsp; </th>
-			<th height="30px"><?php echo $term_name ; ?> &nbsp; </th>
+			<th height="30px" width="15%">&nbsp; Term : &nbsp; </th>
+			<th height="30px" width="15%">&nbsp; <?php echo $term_name ; ?> &nbsp; </th>
 		</tr>
 		<tr>
-			<th height="30px" >Room No. : &nbsp; </th>
-			<th height="30px"><?php echo  $romm ; ?> &nbsp; </th>
+			<th height="30px">&nbsp; Room No. : &nbsp; </th>
+			<th height="30px">&nbsp; <?php echo  $romm ; ?> &nbsp; </th>
 		</tr>
 		<tr>
-			<th height="30px">Total Student : &nbsp; </th>
-			<th height="30px"><?php echo $capacity ; ?> &nbsp; </th>
+			<th height="30px">&nbsp; Total Student : &nbsp; </th>
+			<th height="30px">&nbsp; <?php echo $capacity ; ?> &nbsp; </th>
 		</tr>
 	</table>
 </div>
 <br/>
-<table align="center"class="table-bordered table-hover" border="1"  >
+<table align="center" class="table-bordered table-hover" border="1"  >
          <tr> <th>Roll. No.&rarr;
                
                 </th>

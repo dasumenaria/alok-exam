@@ -2,7 +2,7 @@
 include("index_layout.php"); 
 include("database.php");
 include("authentication.php");
-
+@session_start();
 $class_id=$_GET['cls'];
 $section_id=$_GET['sec'];
 $subject=$_GET['sub'];
@@ -38,6 +38,10 @@ $sub_name=$ft4['subject'];
 $st5=mysql_query("select `name` from `master_sub_subject` where `id`='$sub_subject_id'");
 $ft5=mysql_fetch_array($st5);
 $sub_sub_name=$ft5['name'];
+
+ 
+
+
 
 if(!empty($sub_sub_name)){
 	$subject_name=$sub_name.'-'.$sub_sub_name;
@@ -86,7 +90,7 @@ if(!empty($sub_sub_name)){
 <br>
 <table width="100%">
 <tbody><tr>
-<td width="50%">
+<td width="50%"> 
 
 <table style="text-align:center;font-size:13px;" width="100%" align="left">
 		<tbody><tr style="font-size:20px">
@@ -101,12 +105,12 @@ if(!empty($sub_sub_name)){
 		</tr>
 		<tr>
 			<td style="padding-top:5PX" colspan="2">
-				<b>SESSION 2016-2017</b>
+				<b>SESSION : <?php echo @$_SESSION['session'];?></b>
 			</td>
 		</tr>
 		<tr>
 			<td style="padding-top:5PX" colspan="2">
-				<b>EXAM &nbsp; <?php echo $term_name; ?><br>   </b>
+				<b>EXAM &nbsp; :  <?php echo $term_name; ?><br>   </b>
 			</td>
           
 		</tr>
@@ -157,82 +161,12 @@ if(!empty($sub_sub_name)){
 			<b><?php echo $subject_name; ?> </b></td>
         </tr>
 
-</tbody></table> 
-</td>
-<td style="padding-left:1%" width="49%">
-<table style="text-align:center;font-size:13px;" width="100%" align="left">
-		<tbody><tr style="font-size:20px">
-			<td colspan="2">
-				<strong><?php echo $school; ?></strong>
-			</td>
-		</tr>
-		<tr>
-			<td style="padding-top:5PX" colspan="2">
-				<b>MARK-LIST</b>
-			</td>
-		</tr>
-		<tr>
-			<td style="padding-top:5PX" colspan="2">
-				<b>SESSION 2016-2017</b>
-			</td>
-		</tr>
-		<tr>
-			<td style="padding-top:5PX" colspan="2">
-				<b>EXAM &nbsp; <?php echo $term_name; ?><br>   </b>
-			</td>
-          
-		</tr>
-</tbody></table>
-<br><table style="text-align:center;font-size:15px;" width="100%" cellspacing="0" cellpadding="0" align="left">
-
-		<tbody><tr>
-			<td style="padding-left:10px; text-align:left ; padding-top:5PX;" width="15%">
-				<b>	CLASS </b>
-			</td>  
-            <td style="padding-left:10px;text-align:left;padding-top:5PX;" width="15%">
-				<b><?php echo $class_name; ?></b>
-			</td>
-			<td style="padding-left:10px ; text-align:left;padding-top:5PX;" width="15%">
-				<b>SECTION  </b>
-			</td>
-			 <td style="padding-left:10px;text-align:left;padding-top:5PX;" width="15%">
-				<b><?php echo $section_name; ?></b>
-			</td>
-		</tr>
-	
-		<tr>
-			
-			<td style="padding-left:10px;text-align:left;padding-top:5PX;">
-				<b>DATE OF SUBMI</b>
-			</td>
-            <td style="padding-left:10px;text-align:left;padding-top:5PX;">
-				<b> ..../......./201... </b>
-			</td>
-			<td style="padding-left:10px;padding-top:5PX;;padding-bottom:5PX;text-align:left;">
-				<b>MAXIMUM MARKS</b>
-			</td>
-<td style="padding-left:10px;padding-top:5PX;padding-bottom:5PX;text-align:left"><b> ...................... </b></td>
-		</tr>
-<tr>
-		</tr>
-        	<tr><td style="padding-left:10px;padding-top:5PX;;padding-bottom:5PX;text-align:left;">
-            <b>PASS MARKS</b>
-        </td>
-        <td style="padding-left:10px;padding-top:5PX;padding-bottom:5PX;text-align:left">
-       <b> %</b>
-        </td>
-        
-        <td style="padding-left:10px;padding-top:5PX;;padding-bottom:5PX;text-align:left;">
-				<b>SUBJECT</b>
-			</td>
-<td style="padding-left:10px;padding-top:5PX;padding-bottom:5PX;text-align:left"><b>Hindi&nbsp;Reading Skill </b></td>
-        </tr>
-
-</tbody></table> 
-
+</tbody>
+</table> 
 </td>
 </tr>
-</tbody></table>
+</tbody>
+</table>
 
 
 
@@ -244,7 +178,7 @@ if(!empty($sub_sub_name)){
 
 
 <br>
-  <div style=" float:left;width:50%">
+  <div style="width:100%">
   <br>
 <table style="text-align:center;font-size:15px" width="100%" border="1">
 	<tbody>
@@ -262,13 +196,11 @@ if(!empty($sub_sub_name)){
 			
 $sst=mysql_query("select Distinct(exam_category_id) from `exam_mapping` where `class_id`='$class_id' && `section_id`='$section_id' && `term_id`='$term_id'");
 $count_category=mysql_num_rows($sst);
-
-
 			?>
 			<th colspan="<?php echo $count_category; ?>" style="text-align:center !important;">
 			MARKS OBTAINED
 			</th>
-			<th rowspan="2" width="100">
+			<th rowspan="2" width="100"style="text-align:center !important;">
 			Total
 			</th>
 		</tr>
@@ -281,34 +213,50 @@ $count_category=mysql_num_rows($sst);
 			$fft1=mysql_fetch_array($sst1);
 			$category_name=$fft1['name'];
 			?>
-			<th width="20%" style="text-align:center !important;">
+			<th  style="text-align:center !important;">
 				<?php echo $category_name; ?>
 			</th>
 			<?php } ?>
 		</tr>
 <?php 
 
-$set=mysql_query("select * from `student` where `class_id`='$class_id' && `section_id`='$section_id'");
+$set=mysql_query("select * from `student` where `class_id`='$class_id' && `section_id`='$section_id' order by `roll_no` ASC");
 while($fet=mysql_fetch_array($set)){
-	$i++;
+	
 	$roll_no=$fet['roll_no'];
 	$scholar_no=$fet['scholar_no'];
 	$student_name=$fet['name'];
+	
+	$slt=mysql_query("select * from `subject_allocation` where `class_id`='$class_id' && `section_id`='$section_id' && `elective`='$subject'");
+		$elective_count=mysql_num_rows($slt);
+		if($elective_count>0){
+			
+			$sts=mysql_query("select * from `elective` where `scholar_id`='$scholar_no' && `subject_id`='$subject'");
+			$elec_count=mysql_num_rows($sts);
+			if($elec_count>0){
+				$i++;
+			}
+			else{
+				continue;
+			}
+			
+		}
+		else{ $i++;
+		}
 	?>
 	<tr>
 		<th  width="70PX">
 			<?php echo $i; ?>
 		</th>
-		<th width="100PX">
+		<th width="50px">
 			<?php echo $roll_no; ?>
 		</th>
-		<th  width="PX">
+		<th height="25px" width="250px">
 			<?php echo $student_name; ?>
 		</th>
 <?php 
 $ssts=mysql_query("select Distinct(exam_category_id) from `exam_mapping` where `class_id`='$class_id' && `section_id`='$section_id' && `term_id`='$term_id'");
 $count_category=mysql_num_rows($ssts);
- 
 		while($ffts=mysql_fetch_array($ssts))
 		{
 			$exam_category_id=$ffts['exam_category_id'];
@@ -320,8 +268,8 @@ $count_category=mysql_num_rows($ssts);
 				$total_marks+=$fetch_mark;
 			}
 			?>
-			<th width="20%" style="text-align:center !important;">
-				<?php echo $total_marks; ?>
+			<th style="text-align:center !important;">
+				 
 			</th>
 			<?php } ?>
 		<th  width="100">
@@ -333,71 +281,7 @@ $count_category=mysql_num_rows($ssts);
 
 	</tbody>
 </table>
-
-</div>
-<div style="float:right; width:48%">
-<br>
-<table style="text-align:center;font-size:15px" width="100%" border="1">
-<tbody><tr>
-<th rowspan="2" width="70PX">
-S. NO.
-</th>
-<th rowspan="2" width="100PX">
-ROLL NO.
-</th>
-<th rowspan="2" width="PX">
-NAME</th>
-
-<th colspan="3" style="text-align:center !important;">
-MARKS OBTAINED
-</th>
-
-<th rowspan="2" width="100">
-Total
-</th>
-
-</tr>
-<tr>
-<th width="10%">
-I
-</th>
-<th width="10%">
-II
-</th>
-<th width="10%">
-III
-</th>
-</tr>
-
-<?php 
-
-$set=mysql_query("select * from `student` where `class_id`='$class_id' && `section_id`='$section_id'");
-while($fet=mysql_fetch_array($set)){
-	
-	$roll_no=$fet['roll_no'];
-	$student_name=$fet['name'];
-	?>
-	<tr>
-		<th width="70PX">
-			<?php echo $i++; ?>
-		</th>
-		<th width="100PX">
-			<?php echo $roll_no; ?>
-		</th>
-		<th width="PX">
-			<?php echo $student_name; ?>
-		</th>
-		<th colspan="3">
-			
-		</th>
-		<th width="100">
-			
-		</th>
-	</tr>
-<?php } ?>
-
-</tbody></table>
-</div>
+</div> 
 <br>
 <br>
 <table style="text-align:left;font-size:15px" width="100%">

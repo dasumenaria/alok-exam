@@ -89,11 +89,11 @@ $CuttentStatust=mysql_query("select `roman` from `master_class` where `id`='$cla
 				<th height="28px" colspan="3">Periodic Test</th>  
 			</tr>-->
 			<tr class="header_font" bgcolor="#E0A366">
-				<th height="28" colspan="2"   style="margin-left:5px">Subject / Exam</th> 
-				<th>PT1</th>
-				<th>PT2</th>
-				<th>PT3</th>
-				<th>Avg. of Best 2 PT</th>
+				<th height="28" colspan="2" style="margin-left:5px">Subject / Exam</th> 
+				<th width="7%">PT1</th>
+				<th width="7%">PT2</th>
+				<th width="7%">PT3</th>
+				<th width="7%">Avg. of Best 2 PT</th>
 				<?php 
                  $st=mysql_query("select DISTINCT(term_id) from `master_architecture` where `marksheet_term_id`='$term_id' && `class_id`='$class_id' && `section_id`='$section_id'");
                 while($ft=mysql_fetch_array($st))
@@ -134,13 +134,17 @@ $CuttentStatust=mysql_query("select `roman` from `master_class` where `id`='$cla
 					
 					//if($colspan==1){$colspan=0;}
 					?>
-					<th  height="30px"><b><?php echo $category_name; ?></b></th>
+					<th  height="30px"  width="7%"><b><?php echo $category_name; ?></b></th>
 					<?php
+					if($find_id==13)
+					{
+						echo "<th  width='7%'>Total</th>";
+					}
 				 } 
 				}
                 ?>	
-            <th>Over All Total</th>
-            <th>Grade</th>
+            <th width='7%'>Over All Total</th>
+            <th width='7%'>Grade</th>
 			
          </tr>
 		 
@@ -212,7 +216,7 @@ $CuttentStatust=mysql_query("select `roman` from `master_class` where `id`='$cla
 					echo $view_max_marks;
 				}
 				?></th>
-			<th>(A = 20)</th>
+			<th>(A = 10)</th>
 				<?php 
                 $st=mysql_query("select DISTINCT(term_id) from `master_architecture` where `marksheet_term_id`='$term_id' && `class_id`='$class_id' && `section_id`='$section_id'");
                 while($ft=mysql_fetch_array($st))
@@ -259,11 +263,16 @@ $CuttentStatust=mysql_query("select `roman` from `master_class` where `id`='$cla
 						{ for($x=0; $x<$countArchitecure; $x++){echo"<td></td>";}}
 						
 					
-					//if($colspan==1){$colspan=0;}
+					 
 					?>
 					<th height="30px"><b><?php echo $view_max_marks; ?></b></th>
 					<?php
-						$all_view_max_marks+=$view_max_marks;
+					$all_view_max_marks+=$view_max_marks;
+					if($find_id==13)
+					{
+						echo "<th>20</th>";
+					}
+						
 
                 } }
                 ?>	
@@ -573,8 +582,9 @@ $CuttentStatust=mysql_query("select `roman` from `master_class` where `id`='$cla
 					{
 						$c=0;
 					}
-					echo $tot=$a+$b+$c;
-					$TotalGetMarks+=$tot;
+					$tot=$a+$b+$c;
+					echo $avgofpt=$tot/2;
+					$TotalGetMarks+=$avgofpt;
  				?>
 				</th>
 					
@@ -666,12 +676,15 @@ $CuttentStatust=mysql_query("select `roman` from `master_class` where `id`='$cla
 										$TotalOneSubject+=$reduse_calculation;
 										$OverAllTotalGetMarks+=$reduse_calculation;
 									}
-								 
 								?>
 								<td>
 									<?php echo $TotalOneSubject;//.'--'.$TotalMaxMarks; ?>
 								</td>
 							<?php
+							if($categoryidd==13)
+							{
+								echo "<th>".$TotalGetMarks."</th>";
+							}
 							$forCOl++;;
 							}
  						}

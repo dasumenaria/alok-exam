@@ -63,7 +63,7 @@ if(isset($_POST['view_report']))
 					</form>
 					
 					<?php if($show_report==1)
-					{
+					{	
 						$query2=mysql_query("select * from `master_term` where `id` = '$term'"); 
 						$fetch2=mysql_fetch_array($query2);
 						$exam_name=$fetch2['name'];

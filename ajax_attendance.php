@@ -31,23 +31,21 @@ if((!empty($class)) && (empty($section)) ){
 										$sec_id=$fter['id'];
 										$sec_name=$fter['section'];
 										
-							$st1=mysql_query("select `role` from `login` where `id`='$login_id'");
+										$st1=mysql_query("select `role` from `login` where `id`='$login_id'");
 										$ft1=mysql_fetch_array($st1);
 										$login_role=$ft1['role'];						
 										
 										if($login_role==1){
-											
-										$s1=mysql_query("select `section` from `login` where `id`='$login_id'");
+										 
+										$s1=mysql_query("select `section` from `staff_class` where `staff_id`='$login_id'");
 										$f1=mysql_fetch_array($s1);
 										$staff_class_count=mysql_num_rows($s1);
 										
-										$sect_id=$f1['section'];
 										if($staff_class_count>0){
-											if($sect_id==$sec_id){
 								   ?>
 								   		<option value="<?php echo $sec_id; ?>"><?php echo $sec_name; ?></option>
 
-											<?php } } }
+											<?php  } }
 										
 										else if($login_role==2){
 											?>

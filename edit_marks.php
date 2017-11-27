@@ -192,7 +192,7 @@ $(document).ready(function() {
 										</th>
 									 
 								<?php } 
-									  
+									 
 									$qry1=mysql_query("select `elective`,`sub_subject_id` from `subject_allocation` where `class_id`='$class_id' && `section_id`='$sect_id' && `subject_id`='0'");
 									while($frq=mysql_fetch_array($qry1))
 									{
@@ -216,14 +216,12 @@ $(document).ready(function() {
 											$qts=mysql_query("select `exam_category_type_id` from `exam_mapping` where `class_id`='$class_id' && `section_id`='$sect_id' && `subject_id`='$sub_id' && `sub_subject_id`='$sub_subject_id' && `term_id`='$exam_id' && `exam_category_id`='$exam_category_id' ");
 											$count=mysql_num_rows($qts);
 											 if($count>0)
-											 {	$col+=$count;
-										 
-												if($exam_category_id==18){$col+=2;}
+											 {$col+=$count;
+											 if($exam_category_id==18){$col+=2;}
 											 }
 											 $count=0;
 											 
 										}
-
 										?>
 										<th colspan="<?php echo $col; ?>">
 											 <?php echo $sub_name; ?>
@@ -422,7 +420,7 @@ $(document).ready(function() {
 									$scholar_no=$fr['scholar_no'];
 									$name=$fr['name'];
 									$roll_no=$fr['roll_no'];
- if($w>2){continue;}
+ 
 								?>
 									<tr>
  										<td style="text-align:center"><?php echo $name; ?></td>
@@ -556,10 +554,12 @@ $(document).ready(function() {
 								?>
 										
 			<?php	///////////////////////////////////////ELECTIVE	./////////////////////	?>				
-								<?php
-									 
+										
+										
+										
+									<?php
 									$qry1=mysql_query("select `elective`,`sub_subject_id` from `subject_allocation` where `class_id`='$class_id' && `section_id`='$sect_id' && `subject_id`='0'");
-									while($frq=mysql_fetch_array($qry1))
+									while($frq=mysql_fetch_array($qry))
 									{
 										$sub_id=$frq['elective'];
 										$sub_subject_id=$frq['sub_subject_id'];

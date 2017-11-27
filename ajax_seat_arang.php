@@ -11,7 +11,7 @@ $capacity=$_GET['pon7'];
 			<div class="col-md-4">
 			   <div class="input-icon right">
 					<i class="fa"></i>
-					<select class="form-control ust" required name="category_id">
+					<select class="form-control ust" required name="category_ids">
 						<option value="">---Select Master---</option>
 							<?php 
 								$query2=mysql_query("select * from `exam_category` ORder By `id`"); 
@@ -24,9 +24,7 @@ $capacity=$_GET['pon7'];
 								<option value="<?php echo $mstr_id; ?>"><?php echo $mstr_name; ?></option>
 							<?php } ?>
 					</select>
-				</div>
-				<span class="help-block">
-				Please select category type</span>
+				</div> 
 			</div>
 		</div>
 		<div id="dys"></div>
@@ -42,26 +40,22 @@ $capacity=$_GET['pon7'];
 				</div>
 			</div>
 		<div id="cap"></div>
-		<?php } if((!empty($term_id)) && (!empty($category_id)) && (!empty($room_no)) && (empty($capacity))){ ?>
-			<div class="form-group">
-				<label class="control-label col-md-3">Capacity Of Students</label>
-				<div class="col-md-4">
-					<div class="input-icon right">
-					<i class="fa"></i>
-					<input class="form-control cpact" placeholder="50" required name="capacity" autocomplete="off" type="text">
-					</div>
+		<div class="form-group">
+			<label class="control-label col-md-3">Capacity Of Students</label>
+			<div class="col-md-4">
+				<div class="input-icon right">
+				<i class="fa"></i>
+				<input class="form-control cpact" placeholder="50" required name="capacity" autocomplete="off" type="text">
 				</div>
 			</div>
+		</div>
 		<div id="rws"></div>
-		
-		<?php } if((!empty($term_id)) && (!empty($category_id)) && (!empty($room_no)) && (!empty($capacity))){ ?>
-		
-		<div class="form-group">
+ 		<div class="form-group">
 			<label class="control-label col-md-3">Number of Rows</label> 
 			<div class="col-md-4">
 			   <div class="input-icon right">
 					<i class="fa"></i>
-					<select class="form-control rows" required name="category_id" onchange="get_seat_arreng()" >
+					<select class="form-control rows" required name="category_id" >
 						<option value="">---Select Rows---</option>
 						<option value="1">1</option>
 						<option value="2">2</option>

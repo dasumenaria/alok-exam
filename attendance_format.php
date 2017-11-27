@@ -48,17 +48,16 @@ $login_id=$_SESSION['id'];
 										if($login_role=='1'){
 										
 										
-										$s1=mysql_query("select * from `login` where `id`='$login_id'");
+										$s1=mysql_query("select * from `staff_class` where `staff_id`='$login_id' && `class_id`='$class_id'");
 										$f1=mysql_fetch_array($s1);
 										
 										$staff_class_count=mysql_num_rows($s1);
 										$cls_id=$f1['class'];
 										if($staff_class_count>0){
 											
-											if($cls_id==$class_id){
 			 				   ?>
 												<option value="<?php echo $class_id; ?>"><?php echo $class_name; ?></option>
-											<?php } } }
+											<?php } }
 										else if($login_role==2){
 											?>
 									<option value="<?php echo $class_id; ?>"><?php echo $class_name; ?></option>

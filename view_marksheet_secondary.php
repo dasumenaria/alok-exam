@@ -17,7 +17,6 @@ $set=mysql_query("select `name` from `master_term` where `id`='$exam_name'");
 $sset=mysql_query("select `roman` from `master_class` where `id`='$prmt_id'");
 	$sfet=mysql_fetch_array($sset);
 	$promt_class=$sfet['roman'];
-	
 	 
 $CuttentStatust=mysql_query("select `roman` from `master_class` where `id`='$class_id'");
 	$FtcCuttentStatust=mysql_fetch_array($CuttentStatust);
@@ -122,12 +121,12 @@ $CuttentStatust=mysql_query("select `roman` from `master_class` where `id`='$cla
 					
 					//if($colspan==1){$colspan=0;}
 					?>
-					<th height="30px"><b><?php echo $category_name; ?></b></th>
+					<th height="30px" width="15%"><b><?php echo $category_name; ?></b></th>
 					<?php
                 } }
                 ?>	
-            <th>Over All Total</th>
-            <th>Grade</th>
+            <th width="15%">Over All Total</th>
+            <th width="15%">Grade</th>
 			
          </tr>
 		 

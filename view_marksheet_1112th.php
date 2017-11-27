@@ -204,10 +204,10 @@ $CuttentStatust=mysql_query("select `roman` from `master_class` where `id`='$cla
 		{
 			$SubjectIdGrade=$FtcSubjectDataQuery['id'];
 		
-			$FindSubject=mysql_query("select distinct `subject_id`,`elective` from `subject_allocation` where `class_id`='$class_id'  && `section_id`='$section_id' && `subject_id` ='$SubjectIdGrade'");
+			$FindSubject=mysql_query("select distinct `subject_id`,`elective` from `subject_allocation` where `class_id`='$class_id'  && `section_id`='$section_id' && (`subject_id` = '$SubjectIdGrade' || `elective` = '$SubjectIdGrade')");
 			while($ftc_subject=mysql_fetch_array($FindSubject))  
 			{
- 				$subject_id=$ftc_subject['subject_id'];
+ 				echo $subject_id=$ftc_subject['subject_id'];
 				if(empty($subject_id))
 				{
 					$subject_id=$ftc_subject['elective'];

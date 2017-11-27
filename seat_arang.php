@@ -2,17 +2,7 @@
 include("index_layout.php");
 include("database.php");
 include("authentication.php");
-
-if(isset($_POST['sub']))
-{
-	$class_id=$_POST['class_id'];
-	$subject_id=$_POST['subjc'];
-	$section_id=$_POST['section_id'];
-	$term_id=$_POST['term_id'];
- 	$category_id=$_POST['category_id'];
-
-}
- ?>
+?>
 <html >
 <head>
 <?php css();?>
@@ -43,9 +33,55 @@ if(isset($_POST['sub']))
 				</div>
 			</div>
 			<div class="portlet-body form">
-			<!-- BEGIN FORM-->
-				<form  class="form-horizontal" id="form_sample_2"  role="form" method="post" action="final_time_table.php"> 
+ 		<form  class="form-horizontal" id="form_sample_2"  role="form" method="post" > 
+					
 					<div class="form-body printdata">
+						<div class="form-group">
+							<div class="col-md-12" printdata>
+							
+								<table width="100%" class="hide_print" >
+									<tr>
+										<td><b>Exam Date<b></td>
+									<?php
+										$x=0;
+										for( $ab=1;$ab<=10; $ab++ )
+										{
+
+			$sle_date_store_exam=mysql_query("select * from  `date_store_exam` where `day_id`='$ab' ");
+			$cnt_date_store_exam=mysql_num_rows($sle_date_store_exam);
+				if($cnt_date_store_exam)
+				{
+					$ftc_date_store_exam=mysql_fetch_array($sle_date_store_exam);
+					$date=$ftc_date_store_exam['date'];
+					$date_format=date('d-m-Y', strtotime($date));
+					
+					?>
+					<th>
+						Day <?php echo $ab ; ?> <input name="dppp<?php echo $ab ; ?>" class="form-control form-control-inline input-small date-picker" data-date-format="dd-mm-yyyy" value="<?php if($date!='0000-00-00'){ echo $date_format ;} ?>" placeholder="DD-MM-YYYY" />
+					</th>
+					 
+					<?php 
+				}
+				else
+				{
+				?>
+				<th>
+					Day <?php echo $ab ; ?> <input name="dppp<?php echo $ab ; ?>" class="form-control form-control-inline input-small date-picker" data-date-format="dd-mm-yyyy" placeholder="DD-MM-YYYY" />
+				</th>
+				<?php 
+				}
+
+									
+											$x++; ?>
+											
+											<?php
+											if($x==5){ echo"</tr><tr><td>Exam Date</td>"; }
+										}
+									 ?>
+									</tr>
+								</table>
+							</div>
+						</div>
 						<div class="form-group">
 						<label class="control-label col-md-3">Term</label>
 							<div class="col-md-4">
@@ -64,9 +100,7 @@ if(isset($_POST['sub']))
 												<option value="<?php echo $exam_id; ?>"><?php echo $exam_name; ?></option>
 											<?php } ?>
 									</select>
-								</div>
-								<span class="help-block">
-								Please select Term category</span>
+								</div> 
 							</div>
 					</div>
 		
@@ -77,6 +111,7 @@ if(isset($_POST['sub']))
 					<div id="data"></div>
 
 				</form>
+ 
 			</div>
 				<!-- END FORM-->
 				 
