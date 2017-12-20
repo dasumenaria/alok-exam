@@ -162,7 +162,7 @@ $qury="`class_id` = '$class_id' && `section_id` = '$section_id' && `scholar_no` 
      <div class="form-group">
         <label class="col-md-1 control-label">Scholar</label>
         <div class="col-md-5">
-            <input class="form-control" name="scholar"  type="text" value="<?php echo $scholar_no; ?>">
+            <input class="form-control" name="scholar" readonly type="text" value="<?php echo $scholar_no; ?>">
         </div>
 
         

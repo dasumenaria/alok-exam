@@ -21,6 +21,7 @@ table {
 }
 
 
+
 /*thead*/
 thead {
   position: relative;

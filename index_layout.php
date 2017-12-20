@@ -18,21 +18,17 @@ if(empty($id))
 <link href="assets/global/plugins/simple-line-icons/simple-line-icons.min.css" rel="stylesheet" type="text/css"/>
 <link href="assets/global/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
 <link href="assets/global/plugins/uniform/css/uniform.default.css" rel="stylesheet" type="text/css"/>
-<link href="assets/global/plugins/bootstrap-switch/css/bootstrap-switch.min.css" rel="stylesheet" type="text/css"/>
 
 <link rel="stylesheet" type="text/css" href="assets/global/plugins/select2/select2.css"/>
 <link rel="stylesheet" type="text/css" href="assets/global/plugins/datatables/plugins/bootstrap/dataTables.bootstrap.css"/>
-<link href="assets/global/plugins/icheck/skins/all.css" rel="stylesheet"/>
 
 
 <link rel="stylesheet" type="text/css" href="assets/global/plugins/select2/select2.css"/>
 <link rel="stylesheet" type="text/css" href="assets/global/plugins/datatables/plugins/bootstrap/dataTables.bootstrap.css"/>
 
 <!-- END GLOBAL MANDATORY STYLES -->
-<link rel="stylesheet" type="text/css" href="assets/global/plugins/clockface/css/clockface.css"/>
 <link rel="stylesheet" type="text/css" href="assets/global/plugins/bootstrap-datepicker/css/datepicker3.css"/>
 <link rel="stylesheet" type="text/css" href="assets/global/plugins/bootstrap-timepicker/css/bootstrap-timepicker.min.css"/>
-<link rel="stylesheet" type="text/css" href="assets/global/plugins/bootstrap-colorpicker/css/colorpicker.css"/>
 <link rel="stylesheet" type="text/css" href="assets/global/plugins/bootstrap-daterangepicker/daterangepicker-bs3.css"/>
 <link rel="stylesheet" type="text/css" href="assets/global/plugins/bootstrap-datetimepicker/css/bootstrap-datetimepicker.min.css"/>
 
@@ -42,7 +38,6 @@ if(empty($id))
 <link href="assets/admin/layout/css/layout.css" rel="stylesheet" type="text/css"/>
 <link id="style_color" href="assets/admin/layout/css/themes/darkblue.css" rel="stylesheet" type="text/css"/>
 <link href="assets/admin/layout/css/custom.css" rel="stylesheet" type="text/css"/>
-<link rel="stylesheet" type="text/css" href="/assets/global/plugins/jquery-notific8/jquery.notific8.min.css"/>
 <style>
 .self-table > tbody > tr > td, .self-table > tr > td
 {
@@ -83,7 +78,20 @@ select
 	}
 </style>
 <?php } ?>
-<body class="page-header-fixed page-quick-sidebar-over-content page-style-square"> 
+<style>
+.loader {
+    position: fixed;
+    left: 0px;
+    top: 0px;
+    width: 100%;
+    height: 100%;
+    z-index: 9999;
+    background: url('img/Loading_icon.gif') 50% 50% no-repeat rgb(249,249,249);
+    opacity: .6;
+}
+</style>
+<body class="page-header-fixed page-quick-sidebar-over-content page-style-square">
+<div class="loader">
 <?php 
 function contant_start()
 {
@@ -94,9 +102,9 @@ function contant_start()
 	<div class="page-header-inner">
 		<!-- BEGIN LOGO page-logo -->
 		<div class="page-logo" >
-			<!--a href="index.php" style="text-decoration:none;" >
-				<img src="img/mds_logo.png" alt="logo" height="45px" width="400px" style="padding-top:1px ! important">
-			</a-->
+			<a href="index.php" style="text-decoration:none;" >
+				 
+			</a>
 			<div class="menu-toggler sidebar-toggler hide">
 				<!-- DOC: Remove the above "hide" to enable the sidebar toggler button on header -->
 			</div>
@@ -246,14 +254,13 @@ function contant_start()
 				<!-- END TODO DROPDOWN -->
 				<!-- BEGIN USER LOGIN DROPDOWN -->
 				<!-- DOC: Apply "dropdown-dark" class after below "dropdown-extended" to change the dropdown styte -->
-				<li class="dropdown dropdown-user" style="width:200px !important;">
+				<li class="dropdown dropdown-user" >
 					<a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
 					<!--img alt="" class="img-circle" src="assets/admin/layout/img/avatar3_small.jpg"/-->
 					<span class="username username-hide-on-mobile" >
 					<?php 
 					 //echo $sh;
 					?>
-					
 					 </span>
 					 
 					</a>
@@ -473,9 +480,8 @@ function menu() {
 			</ul>
 			<!-- END SIDEBAR MENU -->
 		</div>
-		
 	</div>
-
+	
 	<?php } ?>
 
 <?php 
@@ -493,6 +499,7 @@ function footer()
 </div>
 </div>
 <?php } ?>
+</div>
 </body><?php 
 
 function scripts()
@@ -507,15 +514,11 @@ function scripts()
 <script src="assets/global/plugins/jquery.blockui.min.js" type="text/javascript"></script>
 <script src="assets/global/plugins/jquery.cokie.min.js" type="text/javascript"></script>
 <script src="assets/global/plugins/uniform/jquery.uniform.min.js" type="text/javascript"></script>
-<script src="assets/global/plugins/bootstrap-switch/js/bootstrap-switch.min.js" type="text/javascript"></script>
-<script src="assets/global/plugins/icheck/icheck.min.js"></script>
 <!-- END CORE PLUGINS -->
 <script type="text/javascript" src="assets/global/plugins/bootstrap-datepicker/js/bootstrap-datepicker.js"></script>
 <script type="text/javascript" src="assets/global/plugins/bootstrap-timepicker/js/bootstrap-timepicker.min.js"></script>
-<script type="text/javascript" src="assets/global/plugins/clockface/js/clockface.js"></script>
 <script type="text/javascript" src="assets/global/plugins/bootstrap-daterangepicker/moment.min.js"></script>
 <script type="text/javascript" src="assets/global/plugins/bootstrap-daterangepicker/daterangepicker.js"></script>
-<script type="text/javascript" src="assets/global/plugins/bootstrap-colorpicker/js/bootstrap-colorpicker.js"></script>
 <script type="text/javascript" src="assets/global/plugins/bootstrap-datetimepicker/js/bootstrap-datetimepicker.min.js"></script>
 <script src="assets/global/plugins/jquery-notific8/jquery.notific8.min.js"></script>
 <script src="assets/admin/pages/scripts/ui-notific8.js"></script>
@@ -540,8 +543,8 @@ function scripts()
 <script src="assets/admin/pages/scripts/ui-general.js" type="text/javascript"></script>
 
 <script>
-jQuery(document).ready(function() {   
- 	Metronic.init(); // init metronic core components
+jQuery(document).ready(function() {    
+	Metronic.init(); // init metronic core components
 	Layout.init(); // init current layout
 	QuickSidebar.init(); // init quick sidebar
 	Demo.init(); // init demo features
@@ -552,7 +555,6 @@ jQuery(document).ready(function() {
 	UIGeneral.init();
 	FormiCheck.init(); // init page demo
 	ComponentsDropdowns.init();
-	
 });
 </script>
 
@@ -565,5 +567,10 @@ function abc()
 	$('#msg_div').remove();
 	}, delay);
 }
+</script>
+<script type="text/javascript">
+$(window).load(function() {
+    $(".loader").fadeOut("slow");
+});
 </script>
 <?php } ?>

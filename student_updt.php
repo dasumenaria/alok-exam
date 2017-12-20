@@ -160,7 +160,7 @@ function number(){
 			url: "ajax_student_edit.php?sch="+schlr+"&rol="+roll+"&cls="+cls+"&sec="+sec,
 			}).done(function(response) {
  
-		   $("#data").html(""+response+"");
+			$("#data").html(""+response+"");
 				
 			
 			});

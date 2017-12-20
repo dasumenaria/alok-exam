@@ -35,13 +35,15 @@ header ("Content-type: application/vnd.ms-excel");
 header ("Content-Disposition: attachment; filename=".$filename.".csv");
 header ("Content-Description: Generated Report" );
  
-		$set=mysql_query("select * from `master_health` where `id`='$health'");
-		$fet=mysql_fetch_array($set);
-
+		$set=mysql_query("select * from `master_health`");
+		while($fet=mysql_fetch_array($set))
+		{
 		$health_name=$fet['health_type'];
 		$parameter=$fet['parameter'];
-
-		$fct="S.No.,Roll No,Student Name,Scholar no,Health-Type,Value-$parameter";
+		$hlth[]=$health_name;
+		}
+		$hlth_nm=implode(',', $hlth);
+		$fct="S.No.,Roll No,Student Name,Scholar no,$hlth_nm";
 
 		$qwq=$fct;
  
@@ -51,16 +53,21 @@ header ("Content-Description: Generated Report" );
 		 $query=mysql_query("select * from `student` where `class_id`='$class' && `section_id`='$section' order By `name`");
 		 while($fets=mysql_fetch_array($query))
 		 {$f++;
-			  $roll_no=$fets['roll_no'];
-			  $scholar_no=$fets['scholar_no'];
-			  $student_name=$fets['name'];
-		  
-				$qwq.="$f,$roll_no,$student_name,$scholar_no,$health_name";
-			
-	 
-				$qwq.="\n";
-		 
-						
+			$roll_no=$fets['roll_no'];
+			$scholar_no=$fets['scholar_no'];
+			$student_name=$fets['name'];
+			$sets=mysql_query("select * from `master_health`");
+			while($fets=mysql_fetch_array($sets))
+			{
+				$hlths_id=$fets['id'];
+				$slt=mysql_query("select * from `student_health` where `master_health_id`='$hlths_id' && `scholar_no`='$scholar_no'");
+				$flt=mysql_fetch_array($slt);
+				$health_datas[]=$flt['value'];
+			}
+			$hlth_data=implode(',', $health_datas);
+			$qwq.="$f,$roll_no,$student_name,$scholar_no,$hlth_data";
+		$qwq.="\n";	
+unset($health_datas);				
 		 }
   						
 echo $qwq;

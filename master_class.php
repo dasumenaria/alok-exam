@@ -6,8 +6,15 @@ include("authentication.php");
 if(isset($_POST['sub'])){
 	
 	$class=$_POST['class'];	
-	$roman=$_POST['roman'];	
-	mysql_query("insert into `master_class` SET `class`='$class',`roman`='$roman'");	
+	$roman=$_POST['roman'];
+	$chk=mysql_query("select * from `master_class` where `class`= '$class'");
+	$count=mysql_num_rows($chk);
+	if($count==0){
+		mysql_query("insert into `master_class` SET `class`='$class',`roman`='$roman'");
+	}
+	else{
+		echo"<script>alert('Class already Exist');</script>";
+	}
 }
 
 

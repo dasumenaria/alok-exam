@@ -114,7 +114,7 @@ include("database.php");
 
 	<?php 
 	if((!empty($class_id)) && (!empty($sect)) && (!empty($term_id)) &&  (!empty($marksheet_term_id)) && (empty($category_id))){
- 		$ftc=mysql_query("select * from `master_architecture` where `class_id`='$class_id' && `section_id`='$sect' && `term_id`='$term_id' && `marksheet_term_id`='$marksheet_term_id'");
+ 		$ftc=mysql_query("select * from `master_architecture` where `class_id`='$class_id' && `section_id`='$sect' && `term_id`='$marksheet_term_id' && `marksheet_term_id`='$term_id'");
 		while($ftwquery=mysql_fetch_array($ftc))
 		{
 			$ExixtCategory_id[]=$ftwquery['category_id'];

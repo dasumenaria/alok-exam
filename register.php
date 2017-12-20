@@ -185,43 +185,7 @@ header("location:register.php");
 </body>
 
 <?php footer();?>
-<script src="assets/global/plugins/jquery.min.js" type="text/javascript"></script>
-<script>
-$(document).ready(function() {		
-	
-	$(".user1").live("change",function(){
-		var t=$(".user").val();
-		var k=$(this).val();
-		if(k.length>0){
-		$.ajax({
-			url: "ajax_num_sub.php?pon="+t+"&pon1="+k,
-			}).done(function(response) {
-			$("#call").html(""+response+"");
-		});
-		}
-		else
-		{	$("#call").html("");
-			}
-	});	  
-	
-	// initiate layout and plugins
-	$(".user").live("change",function(){
-		var t=$(".user").val();
-		var k=$(this).val();
-		if(k.length>0){
-		$.ajax({
-			url: "ajax_num_sub.php?pon="+t,
-			}).done(function(response) {
-			$("#call1").html(""+response+"");
-		});
-		}
-		else
-		{$("#call1").html("");
-		}
-	});	 
-	 	  
-});
-</script>
+ 
 <?php scripts();?>
 
 </html>

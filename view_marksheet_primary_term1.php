@@ -382,7 +382,7 @@ $CuttentStatust=mysql_query("select `roman` from `master_class` where `id`='$cla
 		<table width="100%" height="100px">
 			<tr>
 			<td width="50%" valign="top">
-				<table width="100%" height="100px" border="1" cellspacing="0" cellpadding="0" style="text-align:center">
+				<table width="100%" height="1190px" border="1" cellspacing="0" cellpadding="0" style="text-align:center">
 					<tr  bgcolor="CCFFCC">
 						<th colspan="7" height="35px">Health Status</th>
 					</tr>

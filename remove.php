@@ -9,13 +9,12 @@ if(isset($_POST['sub'])){
 	$section_id=$_POST['section'];
 	$term_id=$_POST['exm'];	
 	 
-	   $sect=mysql_query("select `scholar_no` from `student` where `class_id`='$class_id' && `section_id`='$section_id'"); 
-		while($fect=mysql_fetch_array($sect))
-		{
-			  $scholar_no=$fect['scholar_no'];
-			mysql_query("delete from `student_marks` where `scholar_no`='$scholar_no' && `term_id`='$term_id'");
-		}
-		
+    $sect=mysql_query("select `scholar_no` from `student` where `class_id`='$class_id' && `section_id`=' $section_id'"); 
+	while($fect=mysql_fetch_array($sect))
+	{
+		  $scholar_no=$fect['scholar_no'];
+		mysql_query("delete from `student_marks` where `scholar_no`='$scholar_no' && `term_id`='$term_id'");
+	}
 }
 
 

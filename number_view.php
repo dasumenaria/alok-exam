@@ -10,10 +10,10 @@ $section_id=$_POST['roman'];
 $exam_id=$_POST['exm'];
 $cat=$_POST['cat_id'];
  
-  	echo "<script>
-    location='number_view.php';
-    window.open('number_edit.php?cls=$class_id&sec=$section_id&exm=$exam_id&cat=$cat','_newtab');
-    </script>";  
+	echo "<script>
+	location='number_view.php';
+	window.open('number_edit.php?cls=$class_id&sec=$section_id&exm=$exam_id&cat=$cat','_newtab');
+	</script>";  
 	
 }
  ?>
@@ -139,7 +139,7 @@ $cat=$_POST['cat_id'];
 	$(document).ready(function() {		
 	
 		// initiate layout and plugins
-		$(".user2").live("change",function(){
+		/*$(".user2").live("change",function(){
 		
 			var t=$(this).val();
 			$.ajax({
@@ -147,7 +147,7 @@ $cat=$_POST['cat_id'];
 				}).done(function(response) {
 				$("#data").html(""+response+"");
 			});
-		});
+		});*/
 		// initiate layout and plugins
 		$(".user").live("change",function(){
 			var t=$(this).val();

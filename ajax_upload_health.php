@@ -51,43 +51,7 @@ if((!empty($class)) && (empty($section)) ){
 <?php } if(!empty($section)){
 	
  ?>
-
-
-<div class="form-group">
-							<label class="control-label col-md-3">Subject</label>
-							<div class="col-md-4">
-							   <div class="input-icon right">
-									<i class="fa"></i>
-									<select class="form-control user2" required name="health_id">
-									<option value="">---Select Subject---</option>
-								   
-								   <?php 
-								   $qst=mysql_query("select * from `master_health`");
-								   while($fst=mysql_fetch_array($qst))
-								   {  
-										$health_id=$fst['id']; 
-										$health_type=$fst['health_type'];
-										 
-								   ?>
-									<option value="<?php echo $health_id; ?>"><?php echo $health_type; ?></option>
-								   <?php  } ?> 
-									 
-									</select>
-								</div>
-								<span class="help-block">
-								please select subject category</span>
-							</div>
-						</div>
-
-
- 
-						
-						<div id="exl"></div>
-					
-<?php } if((!empty($cls)) && (!empty($sec)) && (!empty($sub))){?>
-
-  
-						 
+ 					 
     <div class="form-group">
 	<br>
 	<table>

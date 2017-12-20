@@ -1,4 +1,4 @@
-<?php 
+\<?php 
 include("index_layout.php");
 include("database.php");
 //include("authentication.php");

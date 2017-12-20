@@ -33,33 +33,42 @@ if(isset($_POST["Import"]))
 
     if($count>1){  
 
-
 	$sql4 = "SELECT `id` from `subject` where `subject`='$emapData[4]'";
 	$sets1=mysql_query($sql4);
 	$fets1=mysql_fetch_array($sets1);
 	$sub_id=$fets1['id'];
 	 
-	   
+		$c=4;
+	   $set=mysql_query("select * from `master_health`");
+		while($fet=mysql_fetch_array($set))
+		{
+			
+		$health_id=$fet['id'];
+		$health_name=$fet['health_type'];
+		$parameter=$fet['parameter'];
+		$hlth[]=$health_name;
+		
 	  $sql2= "select * from `student_health` where `scholar_no`='$emapData[3]' && `master_health_id`='$health_id'";
 	  $check=mysql_query($sql2);
 	  $cunt=mysql_num_rows($check);
 	  
 	  if($cunt>0)
 	  {
-		  ?>
-		  <script>
-			alert("Marks Is Already In DataBase");
-		  </script>
-		  <?php 
+		  $fet2=mysql_fetch_array($check);
+		  $update_id=$fet2['id'];
+		   $sql4="UPDATE `student_health` SET `scholar_no`='$emapData[3]',`master_health_id`='$health_id',`value`='$emapData[$c]' where `id`='$update_id'";
+			mysql_query($sql4);
 	  }
 	  else{
 		   
-			    $sql3="insert into `student_health` SET `scholar_no`='$emapData[3]',`master_health_id`='$health_id',`value`='$emapData[5]'";
+			    $sql3="insert into `student_health` SET `scholar_no`='$emapData[3]',`master_health_id`='$health_id',`value`='$emapData[$c]'";
 			   mysql_query($sql3);
 			   $exacle_marks++;
 		 
 
 	  }
+	  $c++;
+		}
 
     }
 

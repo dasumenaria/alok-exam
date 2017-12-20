@@ -54,47 +54,9 @@ if((!empty($class)) && (empty($section)) ){
 						<div id="sec"></div>
 					
 <?php } if(!empty($section)){
-	
-$qtr=mysql_query("select `role` from `role` where `id`='$role_id'");
-$ftr=mysql_fetch_array($qtr);
+ ?>
 
-    $role_name=$ftr['role'];
-
- 
-	?>
-
-
-<div class="form-group">
-							<label class="control-label col-md-3">Category</label>
-							<div class="col-md-4">
-							   <div class="input-icon right">
-									<i class="fa"></i>
-									<select class="form-control user2" required name="subj">
-									<option value="">---Select Health Type---</option>
-								   <?php 
-  								   $qst=mysql_query("select *  from `master_health`");
-								   while($fst=mysql_fetch_array($qst))
-								   { 
-										$hlth_id=$fst['id'];
-										$hlth_name=$fst['health_type'];
-										 
-								   ?>
-									<option value="<?php echo $hlth_id; ?>"><?php echo $hlth_name; ?></option>
-								   <?php  } ?>
-								   
-								   
-									</select>
-								</div>
-								<span class="help-block">
-								please select category type</span>
-							</div>
-						</div>
-						 
-								<div id="exl"></div>
-					
-<?php } if((!empty($cls)) && (!empty($sec)) && (!empty($sub)) ){?>
-
-<a style="padding: 3px 15px; background-color:rgba(218, 73, 73, 0.74); color:#FFF;margin-left:30%" href="excel_health.php?cls=<?php echo $cls; ?>&sec=<?php echo $sec; ?>&hlt_typ=<?php echo $sub; ?>" ><strong>Download</strong></a>
+<a style="padding: 3px 15px; background-color:rgba(218, 73, 73, 0.74); color:#FFF;margin-left:30%" href="excel_health.php?cls=<?php echo $class; ?>&sec=<?php echo $section; ?>" ><strong>Download</strong></a>
 
 	 
 <?php } ?>

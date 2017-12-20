@@ -2,7 +2,7 @@
 include("index_layout.php");
 include("database.php");
 include("authentication.php");
-
+/*
 $x=array('0'=>5,'1'=>10,'2'=>15);
 $y=array('0'=>15,'1'=>19,'2'=>1);
  
@@ -16,7 +16,7 @@ for ($i = 0; $i < sizeof($x); $i++) {
 	  
 }
  exit;
-
+*/
 
 if(isset($_POST['sub'])){
 	
